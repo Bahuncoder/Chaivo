@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://chaivo.com/sitemap.xml
+
+# CHAIVO — Premium Himalayan Chai
+# https://chaivo.com
