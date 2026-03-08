@@ -3,12 +3,20 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import LoadingScreen from './components/LoadingScreen';
+import CookieConsent from './components/CookieConsent';
 import HomePage from './pages/HomePage';
 import MenuPage from './pages/MenuPage';
 import OurStoryPage from './pages/OurStoryPage';
 import LocationsPage from './pages/LocationsPage';
 import ContactPage from './pages/ContactPage';
 import ComingSoonPage from './pages/ComingSoonPage';
+import CareersPage from './pages/CareersPage';
+import FranchisePage from './pages/FranchisePage';
+import BlogPage from './pages/BlogPage';
+import PrivacyPage from './pages/PrivacyPage';
+import TermsPage from './pages/TermsPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -38,6 +46,7 @@ function App() {
 
   return (
     <>
+      <LoadingScreen />
       <ScrollToTop />
       <Navbar />
       <AnimatePresence mode="wait">
@@ -48,9 +57,16 @@ function App() {
           <Route path="/locations" element={<AnimatedPage><LocationsPage /></AnimatedPage>} />
           <Route path="/contact" element={<AnimatedPage><ContactPage /></AnimatedPage>} />
           <Route path="/coming-soon" element={<AnimatedPage><ComingSoonPage /></AnimatedPage>} />
+          <Route path="/careers" element={<AnimatedPage><CareersPage /></AnimatedPage>} />
+          <Route path="/franchise" element={<AnimatedPage><FranchisePage /></AnimatedPage>} />
+          <Route path="/journal" element={<AnimatedPage><BlogPage /></AnimatedPage>} />
+          <Route path="/privacy" element={<AnimatedPage><PrivacyPage /></AnimatedPage>} />
+          <Route path="/terms" element={<AnimatedPage><TermsPage /></AnimatedPage>} />
+          <Route path="*" element={<AnimatedPage><NotFoundPage /></AnimatedPage>} />
         </Routes>
       </AnimatePresence>
       <Footer />
+      <CookieConsent />
     </>
   );
 }

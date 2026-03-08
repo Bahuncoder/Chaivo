@@ -1,13 +1,20 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaInstagram, FaTiktok, FaFacebookF } from 'react-icons/fa';
-import { GiTeapot } from 'react-icons/gi';
 
 const footerLinks = [
   { to: '/menu', label: 'Menu' },
-  { to: '/our-story', label: 'Story' },
+  { to: '/our-story', label: 'Our Story' },
   { to: '/locations', label: 'Locations' },
   { to: '/contact', label: 'Contact' },
+  { to: '/journal', label: 'Journal' },
+];
+
+const companyLinks = [
+  { to: '/careers', label: 'Careers' },
+  { to: '/franchise', label: 'Franchise' },
+  { to: '/privacy', label: 'Privacy Policy' },
+  { to: '/terms', label: 'Terms of Service' },
 ];
 
 const socialLinks = [
@@ -24,7 +31,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <GiTeapot className="text-saffron text-xl" />
+              <img src="/chaivo-logo.svg" alt="CHAIVO" className="w-7 h-7" />
               <span className="font-heading text-2xl font-bold text-cream">
                 CHAIVO
               </span>
@@ -60,11 +67,14 @@ export default function Footer() {
               Company
             </h4>
             <ul className="space-y-3">
-              {['Careers', 'Press', 'Franchise', 'Privacy'].map((item) => (
-                <li key={item}>
-                  <span className="text-cream/50 text-sm hover:text-saffron transition-colors duration-300 cursor-pointer">
-                    {item}
-                  </span>
+              {companyLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="text-cream/50 text-sm hover:text-saffron transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

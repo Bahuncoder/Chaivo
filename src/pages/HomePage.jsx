@@ -2,6 +2,8 @@ import SEO from '../components/SEO';
 import Hero from '../components/Hero';
 import Menu from '../components/Menu';
 import OurStory from '../components/OurStory';
+import Testimonials from '../components/Testimonials';
+import Loyalty from '../components/Loyalty';
 import Locations from '../components/Locations';
 import Contact from '../components/Contact';
 
@@ -28,6 +30,8 @@ export default function HomePage() {
       <Hero />
       <Menu />
       <OurStory />
+      <Testimonials />
+      <Loyalty />
       <Locations />
       <Contact />
     </>

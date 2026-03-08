@@ -6,40 +6,74 @@ const menuItems = [
   {
     name: 'Chaivo Classic',
     desc: 'Original Nepali milk chai — bold, creamy, timeless',
+    ingredients: 'Ilam black tea, whole milk, cane sugar, cardamom',
+    badges: ['vegetarian'],
+    cal: '120 cal',
+    sizes: { S: '$4', M: '$5', L: '$6' },
     price: '$5',
     icon: '☕',
   },
   {
     name: 'Chaivo Gold',
     desc: 'Ilam premium first flush — rare and refined',
+    ingredients: 'First flush Ilam tea, spring water, raw honey',
+    badges: ['vegan', 'organic'],
+    cal: '50 cal',
+    sizes: { S: '$6', M: '$7', L: '$8' },
     price: '$7',
     icon: '🏆',
   },
   {
     name: 'Chaivo Spice',
     desc: 'Himalayan masala blend — warm and aromatic',
+    ingredients: 'CTC tea, ginger, cinnamon, cloves, black pepper, milk',
+    badges: ['vegetarian', 'spicy'],
+    cal: '130 cal',
+    sizes: { S: '$5', M: '$6', L: '$7' },
     price: '$6',
     icon: '🌶️',
   },
   {
     name: 'Chaivo Zen',
     desc: 'Tulsi ginger wellness chai — soothe the soul',
+    ingredients: 'Holy basil, ginger root, lemongrass, green tea, honey',
+    badges: ['vegan', 'caffeine-light'],
+    cal: '40 cal',
+    sizes: { S: '$5', M: '$6', L: '$7' },
     price: '$6',
     icon: '🍃',
   },
   {
     name: 'Chaivo Royal',
     desc: 'Saffron cardamom luxury chai — fit for royalty',
+    ingredients: 'Kashmiri saffron, green cardamom, Ilam tea, whole milk, raw cane sugar',
+    badges: ['vegetarian', 'premium'],
+    cal: '150 cal',
+    sizes: { S: '$8', M: '$9', L: '$11' },
     price: '$9',
     icon: '👑',
   },
   {
     name: 'Chaivo Ice',
     desc: 'Cold brew chai modern twist — smooth and chill',
+    ingredients: 'Cold-steeped Ilam tea, oat milk, vanilla, ice',
+    badges: ['vegan', 'gluten-free'],
+    cal: '90 cal',
+    sizes: { S: '$5', M: '$6', L: '$7' },
     price: '$6',
     icon: '🧊',
   },
 ];
+
+const badgeStyles = {
+  vegan: 'bg-forest/10 text-forest',
+  vegetarian: 'bg-forest/10 text-forest',
+  organic: 'bg-forest/10 text-forest',
+  'gluten-free': 'bg-saffron/10 text-saffron-dark',
+  'caffeine-light': 'bg-saffron/10 text-saffron-dark',
+  spicy: 'bg-terracotta/10 text-terracotta',
+  premium: 'bg-saffron/10 text-saffron-dark',
+};
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -71,14 +105,36 @@ function MenuCard({ item, index }) {
       <h3 className="font-heading text-xl font-bold text-warm-brown mb-2 group-hover:text-saffron transition-colors duration-300">
         {item.name}
       </h3>
-      <p className="text-warm-brown/60 text-sm leading-relaxed mb-4">
+      <p className="text-warm-brown/60 text-sm leading-relaxed mb-2">
         {item.desc}
       </p>
+      {item.badges && (
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {item.badges.map((badge) => (
+            <span key={badge} className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${badgeStyles[badge] || 'bg-cream text-warm-brown/50'}`}>
+              {badge}
+            </span>
+          ))}
+        </div>
+      )}
+      {item.ingredients && (
+        <p className="text-warm-brown/40 text-xs mb-3 leading-relaxed">
+          <span className="font-semibold text-warm-brown/50">Ingredients:</span> {item.ingredients}
+        </p>
+      )}
       <div className="flex items-center justify-between">
-        <span className="text-saffron font-bold text-lg" aria-label={`Price: ${item.price}`}>{item.price}</span>
-        <span className="text-xs font-semibold tracking-wider uppercase text-saffron/0 group-hover:text-saffron transition-all duration-300">
-          Add to order →
-        </span>
+        <div className="flex items-center gap-2">
+          {item.sizes ? (
+            Object.entries(item.sizes).map(([size, price]) => (
+              <span key={size} className="text-xs text-warm-brown/50">
+                <span className="font-semibold">{size}</span> {price}
+              </span>
+            ))
+          ) : (
+            <span className="text-saffron font-bold text-lg" aria-label={`Price: ${item.price}`}>{item.price}</span>
+          )}
+        </div>
+        <span className="text-[10px] text-warm-brown/30">{item.cal}</span>
       </div>
     </motion.div>
   );

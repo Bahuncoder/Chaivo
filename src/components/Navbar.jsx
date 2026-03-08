@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GiTeapot } from 'react-icons/gi';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 
 export default function Navbar() {
@@ -43,9 +42,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <GiTeapot className={`text-2xl transition-colors duration-300 ${
-              scrolled ? 'text-saffron' : 'text-cream'
-            }`} />
+            <img src="/chaivo-logo.svg" alt="CHAIVO" className="w-8 h-8" />
             <span className={`font-heading text-2xl font-bold tracking-wide transition-colors duration-300 ${
               scrolled ? 'text-warm-brown' : 'text-cream'
             }`}>
